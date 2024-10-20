@@ -153,7 +153,3 @@ def group_message(data):
         emit('new_group_message', {'group': group_name, 'message': message}, room=group_name)
         logger.info(f"Group message in {group_name}: {session['user']['name']} - {data['message']}")
 
-if __name__ == '__main__':
-    if not os.path.exists('static/uploads'):
-        os.makedirs('static/uploads')
-    socketio.run(app, debug=True)
