@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="top-bar">
+            <button id="toggle-sidebar"><i class="fas fa-bars"></i></button>
+            <h1>Chat Platform</h1>
+            <div class="user-actions">
+                <div class="inbox">
+                    <i class="fas fa-inbox"></i>
+                    <span id="unread-count" class="unread-count"></span>
+                </div>
+                <div class="profile">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="sidebar">
+                <h2>Online Users</h2>
+                <ul id="user-list"></ul>
+                <h2>Groups</h2>
+                <ul id="group-list"></ul>
+                <button id="create-group-btn">Create Group</button>
+            </div>
+            <div class="main-chat">
+                <div id="chat-messages"></div>
+                <div class="input-area">
+                    <input type="text" id="message-input" placeholder="Type a message...">
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                    <button id="upload-btn"><i class="fas fa-image"></i></button>
+                    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="private-chat-container" class="private-chat-container"></div>
+    <div id="inbox-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Inbox</h2>
+            <ul id="inbox-list"></ul>
+        </div>
+    </div>
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>User Profile</h2>
+            <p id="profile-details"></p>
+        </div>
+    </div>
+    <div id="create-group-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create Group</h2>
+            <input type="text" id="group-name-input" placeholder="Enter group name">
+            <button id="create-group-submit">Create</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
